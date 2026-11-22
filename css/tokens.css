@@ -12,5 +12,5 @@
 /* Korean: Wanted Sans for text and headings (self-hosted, css/fonts-ko.css); the wordmark stays Familjen Grotesk; mono labels stay IBM Plex Mono with Hangul falling back to Wanted Sans */
 html[lang="ko"]{--sans:'Wanted Sans Variable','Apple SD Gothic Neo','Malgun Gothic',sans-serif;--mono:'IBM Plex Mono','Wanted Sans Variable','Apple SD Gothic Neo','Malgun Gothic',monospace}
 html[lang="ko"] :is(.logo,#wm){font-family:'Familjen Grotesk','Helvetica Neue',Arial,sans-serif}
-html[lang="ko"] body{word-break:keep-all;line-break:strict;line-height:1.55}
-html[lang="ko"] :is(h1,h2,h3,h4,.cta-line,.idea-sig){letter-spacing:-.02em;line-height:1.2}
+html[lang="ko"] body{word-break:keep-all;line-break:strict}
+/* further Korean typography: css/ko.css */
