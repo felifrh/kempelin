@@ -1,0 +1,82 @@
+/* Reset, canvas and loader, header and nav, intro, cursor dot, reveal on scroll */
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--mist);color:var(--olive);font-family:var(--sans);font-size:18px;line-height:1.4;overflow-x:clip}
+a{color:inherit}
+.mono{font-family:var(--mono);font-weight:300;font-size:12px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.wrap{padding-left:var(--pad);padding-right:var(--padr)}
+:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+section{position:relative}
+.sec{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-block:clamp(88px,14vh,160px)}
+
+/* canvas + loader */
+#bird{position:fixed;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+#fallbackBird{display:none;position:fixed;right:-6vw;top:12vh;width:min(70vw,560px);z-index:5;pointer-events:none;transform:rotate(-8deg)}
+html.nowebgl #fallbackBird{display:block}
+#fallbackBird{height:auto}
+.loader{display:none;position:fixed;inset:0;z-index:300;background:var(--olive);color:var(--butter);place-items:center;clip-path:inset(0 0 0 0);transition:clip-path .9s var(--ease)}
+html.loading .loader{display:grid}
+.loader.done{clip-path:inset(0 0 100% 0)}
+.loader .word{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;letter-spacing:-.05em;font-size:clamp(56px,17vw,260px);line-height:1;color:var(--butter);white-space:nowrap;clip-path:inset(-20% 100% -20% -4%);padding-right:.05em}
+.loader svg{position:absolute;left:0;top:50%;height:1.15em;font-size:clamp(56px,17vw,260px);width:auto;transform:translate(-30vw,-50%);will-change:transform}
+.loader .count{position:absolute;left:var(--pad);bottom:max(24px,env(safe-area-inset-bottom,0px))}
+
+/* header + nav */
+.top{position:absolute;z-index:20;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:flex-start;padding-top:max(22px,env(safe-area-inset-top,0px));padding-left:var(--pad);padding-right:var(--padr)}
+.logo{display:flex;align-items:flex-end;gap:.15em;font-weight:700;font-size:30px;letter-spacing:-.05em;line-height:1;text-decoration:none;color:var(--olive)}
+.logo svg{width:.93em;height:auto;margin-bottom:.02em}
+.nav{position:fixed;z-index:80;left:50%;transform:translateX(-50%);bottom:max(16px,env(safe-area-inset-bottom,0px));display:flex;gap:4px;padding:5px;border-radius:999px;background:var(--olive);box-shadow:0 0 0 1px rgba(237,233,175,.4);max-width:calc(100% - 24px);overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:9px 14px;border-radius:999px;color:var(--butter);text-decoration:none;white-space:nowrap;transition:background .4s var(--ease),color .4s var(--ease)}
+.nav a.on{background:var(--acid);color:var(--olive)}
+
+@media(max-width:520px){.nav{gap:2px;padding:4px}.nav a{padding:9px clamp(5px,1.9vw,10px);font-size:clamp(9px,2.7vw,11px);letter-spacing:.04em}}
+
+/* intro on the start page: the bird flies in from the right and pulls the wordmark open, which then settles top left */
+#wm{display:none;position:fixed;left:0;top:0;z-index:4;margin:0;pointer-events:none;transform-origin:0 0;white-space:nowrap;font-weight:700;letter-spacing:-.05em;line-height:1;color:var(--olive);font-size:clamp(56px,min(14.5vw,30svh),260px);padding-right:.06em;clip-path:inset(-20% -2% -20% 110%);will-change:transform,clip-path}
+@media(max-width:700px){#wm{font-size:clamp(56px,20vw,120px)}}
+html.loading #wm{display:block}
+html.loading #hero .logo span,html.loading #hero .logo svg{opacity:0}
+#hero .logo span{transition:opacity .5s ease}#hero .logo svg{transition:opacity .8s ease .3s}
+#wm{transition:opacity .5s ease}
+html.loading:not(.landing) #hero .top .mono,html.loading:not(.landing) #hero h1,html.loading:not(.landing) .hero-meta,html.loading:not(.landing) .nav{opacity:0}
+#hero .top .mono,#hero h1,.hero-meta,.nav{transition:opacity .9s var(--ease)}
+#hero .top .mono{transition-delay:.3s}#hero h1{transition-delay:.2s}.hero-meta{transition-delay:.45s}.nav{transition-delay:.6s}
+/* cursor dot */
+.dot{display:none}
+@media (hover:hover) and (pointer:fine){
+  html.has-dot, html.has-dot *{cursor:none!important}
+  .dot{display:block;position:fixed;left:0;top:0;z-index:999;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;opacity:0;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease)}
+  .dot.on{opacity:1}
+  .dot.big{width:52px;height:52px;margin:-26px 0 0 -26px}
+}
+
+/* reveal on scroll (only when JS is on) */
+html.js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+html.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js .rv{opacity:1;transform:none;transition:none}
+  .shot img,.shot .ph,.loader,.svc,.steps button,.f-list li,.sim,.sim.open,.nav a,.bar i,.mark,.reveal-btn .lab,.reveal-btn .num{transition:none!important}
+}
+
+
+/* Replacements for former inline styles (CSP: no inline style attributes). Doubled class = beats the section rules. */
+:root .wrap-top.wrap-top{position:relative;z-index:2}
+:root .hero-tags.hero-tags{display:block;margin-top:10px}
+:root .cta-line.cta-line{margin:0 0 22px;font-weight:500;font-size:clamp(22px,2.4vw,32px);letter-spacing:-.02em;max-width:22ch;line-height:1.15}
+:root .ar-1.ar-1{aspect-ratio:1}
+:root .ar-45.ar-45{aspect-ratio:4/5}
+:root .ar-916.ar-916{aspect-ratio:9/16}
+:root .q-gap.q-gap{margin-top:clamp(28px,5vh,48px)}
+:root .note-top.note-top{margin-top:18px}
+:root .note-ko.note-ko{margin:8px 0 0;font-size:14px}
+:root .note-sm.note-sm{font-size:14px}
+
+/* Skip link */
+.skip{position:absolute;left:-9999px;top:0;z-index:1000;padding:12px 18px;background:var(--olive);color:var(--white);font-weight:500;text-decoration:none}
+.skip:focus{left:12px;top:12px}
+main:focus{outline:none}
+
+/* 404 page */
+.nf{min-height:100svh;display:grid;place-items:center;background:var(--mist)}
+.nf-in{padding:var(--pad)}
+.nf h1{margin:8px 0 18px;font-size:clamp(36px,7vw,88px);line-height:1;letter-spacing:-.04em;font-weight:500}

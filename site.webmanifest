@@ -1,0 +1,27 @@
+{
+  "name": "Kempelin",
+  "short_name": "Kempelin",
+  "description": "Kempelin is a Seoul-based U.S. commerce team for Korean brands: Amazon, Instagram, TikTok and government funding.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ABB9BA",
+  "theme_color": "#ABB9BA",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

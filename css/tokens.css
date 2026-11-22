@@ -1,0 +1,10 @@
+/* Design tokens: colour, type, spacing, easing */
+:root{
+  --butter:#EDE9AF; --acid:#DAE666; --mist:#ABB9BA; --olive:#25281F; --olive-soft:#4A4E43; --white:#FFFFFF;
+  --sans:'Familjen Grotesk','Helvetica Neue',Arial,sans-serif;
+  --mono:'ABC Gaisyr Mono','IBM Plex Mono','Courier New',monospace;
+  --pad:max(clamp(20px,6vw,128px), env(safe-area-inset-left,0px));
+  --padr:max(clamp(20px,6vw,128px), env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.22,.8,.2,1);
+}
+*{box-sizing:border-box}

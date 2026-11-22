@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
-# TODO: add the Sitemap line once the final domain is known
+
+# Placeholder domain: replace with the final one (see README)
+Sitemap: https://kempelin.com/sitemap.xml

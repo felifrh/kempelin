@@ -1,35 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Kempelin – Test the market before you build the operation</title>
 <meta name="description" content="Kempelin is a Seoul-based U.S. commerce team for Korean brands: Amazon, Instagram, TikTok and government funding.">
 <meta name="theme-color" content="#ABB9BA">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@300&display=swap">
-<link rel="stylesheet" href="assets/css/main.css">
-
-<script>
-(function(){try{history.scrollRestoration='manual'}catch(e){}try{scrollTo(0,0)}catch(e){}addEventListener('pageshow',function(){try{if(!location.hash)scrollTo(0,0)}catch(e){}});addEventListener('load',function(){try{if(!location.hash&&document.documentElement.classList.contains('loading'))scrollTo(0,0)}catch(e){}});var h=document.documentElement;h.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('loading')}catch(e){}setTimeout(function(){h.classList.remove('loading')},9500)})();
+<link rel="canonical" href="https://kempelin.com/">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kempelin">
+<meta property="og:title" content="Kempelin – Test the market before you build the operation">
+<meta property="og:description" content="Kempelin is a Seoul-based U.S. commerce team for Korean brands: Amazon, Instagram, TikTok and government funding.">
+<meta property="og:url" content="https://kempelin.com/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://kempelin.com/assets/og/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kempelin: Test the market before you build the operation. A dark olive swift on a grey-green background.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kempelin – Test the market before you build the operation">
+<meta name="twitter:description" content="Kempelin is a Seoul-based U.S. commerce team for Korean brands: Amazon, Instagram, TikTok and government funding.">
+<meta name="twitter:image" content="https://kempelin.com/assets/og/share.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://kempelin.com/#org",
+      "name": "Kempelin Co., Ltd.",
+      "url": "https://kempelin.com/",
+      "logo": "https://kempelin.com/assets/icons/icon-512.png",
+      "description": "Kempelin is a Seoul-based U.S. commerce team for Korean brands: Amazon, Instagram, TikTok and government funding.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "402-C16, 12, Teheran-ro 70-gil, Gangnam-gu",
+        "addressLocality": "Seoul",
+        "addressCountry": "KR"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
+          "@type": "Country",
+          "name": "South Korea"
+        }
+      ],
+      "knowsAbout": [
+        "Amazon account management",
+        "Instagram content",
+        "TikTok creators and UGC",
+        "Korean government export funding"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kempelin.com/#site",
+      "url": "https://kempelin.com/",
+      "name": "Kempelin",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://kempelin.com/#org"
+      }
+    }
+  ]
+}
 </script>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@300&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/simulations.css">
+<script src="js/boot.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="wm" aria-hidden="true">kempelin</div>
-</div>
 
 <canvas id="bird" aria-hidden="true"></canvas>
 <svg id="fallbackBird" viewBox="45.76 31.56 216.91 232.63" aria-hidden="true"><path fill="#25281F" d="M262.67,185.76c-42.2,1.33-84.5-5.27-125.19-15.79-1.91,14.66-6.55,28.73-13.25,41.84,7.25,4.26,7.38,9.27,7.13,21.61-.16,8.02-3.87,30.77-3.87,30.77,0,0-.84-13.65-4.55-24.31-2.58-7.44-7.45-14.31-7.45-14.31l-26.03,29.85,25.52-40.68c-7.85-21.47-11.38-32.47-11.63-55.42-25.89-42.05-44.51-70.22-57.59-127.76,16.49,31.43,25.61,45.56,46.99,73.95,2.24,2.97,17.58,23.15,18.95,23.79,2.06.96,7.96-2.95,12.8-.27,6.19,3.43,6.56,12.18,10.06,14.85,3.92,2.98,25.83,10.17,32,12.47,31.35,11.7,63.57,21.52,96.11,29.42Z"/></svg>
 <div class="dot" id="dot" aria-hidden="true"></div>
 
+<header>
 <nav class="nav mono" id="nav" aria-label="Sections">
   <a href="#hero" class="on">Start</a><a href="#idea">Idea</a><a href="#services">Services</a><a href="#explore">Explore</a><a href="#work">Work</a><a href="#contact">Contact</a>
 </nav>
+</header>
 
-<main>
+<main id="main" tabindex="-1">
 <section id="hero" aria-label="Kempelin">
   <div class="top">
     <a class="logo" href="#hero" aria-label="Kempelin"><svg viewBox="45.76 31.56 216.91 232.63" aria-hidden="true"><path fill="#25281F" d="M262.67,185.76c-42.2,1.33-84.5-5.27-125.19-15.79-1.91,14.66-6.55,28.73-13.25,41.84,7.25,4.26,7.38,9.27,7.13,21.61-.16,8.02-3.87,30.77-3.87,30.77,0,0-.84-13.65-4.55-24.31-2.58-7.44-7.45-14.31-7.45-14.31l-26.03,29.85,25.52-40.68c-7.85-21.47-11.38-32.47-11.63-55.42-25.89-42.05-44.51-70.22-57.59-127.76,16.49,31.43,25.61,45.56,46.99,73.95,2.24,2.97,17.58,23.15,18.95,23.79,2.06.96,7.96-2.95,12.8-.27,6.19,3.43,6.56,12.18,10.06,14.85,3.92,2.98,25.83,10.17,32,12.47,31.35,11.7,63.57,21.52,96.11,29.42Z"/></svg><span>kempelin</span></a>
     <span class="mono">Seoul → U.S.</span>
   </div>
-  <div class="wrap" style="position:relative;z-index:2">
+  <div class="wrap wrap-top">
     <h1>Test the market before you build the operation.</h1>
     <div class="hero-meta">
-      <p>We support you to test the market before you have to build a full operation yourself.<br><span class="mono" style="display:block;margin-top:10px">Amazon · Instagram · TikTok · Government funding</span></p>
+      <p>We support you to test the market before you have to build a full operation yourself.<br><span class="mono hero-tags">Amazon · Instagram · TikTok · Government funding</span></p>
       <a class="btn" href="#idea" data-hover>Explore Kempelin <span aria-hidden="true">↓</span></a>
     </div>
   </div>
@@ -125,10 +199,10 @@
 <section id="explore" class="sec wrap" aria-label="Explore">
   <h2 class="rv">See how it works.</h2>
   <ul class="sims">
-    <li class="rv"><div><b>Amazon</b><span class="t">See how price, costs and advertising spend change your profit.</span></div><a class="btn solid" href="#amazon-simulation" data-hover id="openSim">Open <span aria-hidden="true">→</span></a></li>
-    <li class="rv"><div><b>Instagram</b><span class="t">See how one product becomes several pieces of content.</span></div><a class="btn solid" href="#instagram-simulation" data-sim="instagram-simulation" data-hover>Open <span aria-hidden="true">→</span></a></li>
-    <li class="rv"><div><b>TikTok</b><span class="t">Follow a shooting guide to a finished UGC video.</span></div><a class="btn solid" href="#tiktok-simulation" data-sim="tiktok-simulation" data-hover>Open <span aria-hidden="true">→</span></a></li>
-    <li class="rv"><div><b>Government funding</b><span class="t">Follow the way from finding a programme to a finished application.</span></div><a class="btn solid" href="#funding-simulation" data-sim="funding-simulation" data-hover>Open <span aria-hidden="true">→</span></a></li>
+    <li class="rv"><div><b>Amazon</b><span class="t">See how price, costs and advertising spend change your profit.</span></div><a class="btn solid" href="#sim-amazon" data-hover id="openSim">Open <span aria-hidden="true">→</span></a></li>
+    <li class="rv"><div><b>Instagram</b><span class="t">See how one product becomes several pieces of content.</span></div><a class="btn solid" href="#sim-instagram" data-sim="sim-instagram" data-hover>Open <span aria-hidden="true">→</span></a></li>
+    <li class="rv"><div><b>TikTok</b><span class="t">Follow a shooting guide to a finished UGC video.</span></div><a class="btn solid" href="#sim-tiktok" data-sim="sim-tiktok" data-hover>Open <span aria-hidden="true">→</span></a></li>
+    <li class="rv"><div><b>Government funding</b><span class="t">Follow the way from finding a programme to a finished application.</span></div><a class="btn solid" href="#sim-funding" data-sim="sim-funding" data-hover>Open <span aria-hidden="true">→</span></a></li>
   </ul>
 </section>
 
@@ -152,20 +226,43 @@
     <p>A good product should not mean building a team overseas.</p>
     <p>Kempelin is a U.S. commerce operations team for brands that want to try the American market with a realistic budget.</p>
   </div>
-  <p class="rv" style="margin:0 0 22px;font-weight:500;font-size:clamp(22px,2.4vw,32px);letter-spacing:-.02em;max-width:22ch;line-height:1.15">Let's see what we can build together.</p>
+  <p class="rv cta-line">Let's see what we can build together.</p>
   <div class="rv">
-    <button class="reveal-btn" id="phone" type="button" aria-expanded="false" aria-controls="phoneNum" data-hover><span class="lab">Talk to us</span><span class="num" id="phoneNum">+82 00 0000 0000</span></button>
+    <button class="reveal-btn" id="phone" type="button" aria-expanded="false" aria-controls="phoneNum" data-hover><span class="lab">Talk to us</span><span class="num" id="phoneNum"></span></button>
     <span class="hint mono" id="hint">Hover or tap to show the number</span>
   </div>
-  <footer class="mono">
+  <footer class="mono" role="contentinfo">
     <span>Kempelin Co., Ltd.</span>
     <span>402-C16, 12, Teheran-ro 70-gil, Gangnam-gu, Seoul, Republic of Korea</span>
-    <span>tech@kempelin.com</span>
+    <span id="mail"></span>
+    <a href="#privacy" data-sim="privacy" data-hover>Privacy</a>
   </footer>
 </section>
 </main>
 
-<div class="sim" id="sim" role="dialog" aria-modal="true" aria-labelledby="simTitle" data-lenis-prevent>
+<!-- LEGAL REVIEW NEEDED before launch: wording, operator, hosting region (see PRD 8 and 14). -->
+<div class="sim" id="sim-privacy" role="dialog" aria-modal="true" aria-labelledby="prTitle">
+  <div class="sim-in">
+    <div class="sim-head"><span class="mono">Privacy</span><button class="sim-close" data-close aria-label="Close privacy notice" data-hover>×</button></div>
+    <h3 id="prTitle">Privacy notice</h3>
+    <div class="prose">
+      <h4>Who is responsible</h4>
+      <p>Kempelin Co., Ltd., 402-C16, 12, Teheran-ro 70-gil, Gangnam-gu, Seoul, Republic of Korea. Email: <span id="mailPriv"></span></p>
+      <h4>What happens when you visit</h4>
+      <p>Our hosting provider processes technical server logs (IP address, browser, time) to deliver and secure the site. This website sets no cookies and uses no tracking or analytics. It has no forms.</p>
+      <p>Showing the phone number or email address happens in your browser only. Nothing is sent to us.</p>
+      <h4>Third parties</h4>
+      <p>The site is hosted with Vercel Inc. and delivered through Cloudflare, Inc. (both United States). Fonts and scripts are served from this website itself.</p>
+      <h4>If you contact us</h4>
+      <p>If you call or write to us, we use the data you share to answer you. We keep it only as long as needed for that.</p>
+      <h4>Your rights</h4>
+      <p>You can ask us for access to, correction of or deletion of your data, and object to its use. Write to the address above.</p>
+      <p class="note">Last updated: 22 November 2026.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sim" id="sim" role="dialog" aria-modal="true" aria-labelledby="simTitle">
   <div class="sim-in">
     <div class="sim-head"><span class="mono">Amazon · simulation</span><button class="close" id="closeSim" aria-label="Close simulation" data-hover>×</button></div>
     <h3 id="simTitle">After fees, FBA, shipping, ads and returns: do you make money at this price?</h3>
@@ -192,7 +289,7 @@
   </div>
 </div>
 
-<div class="sim" id="sim-ig" role="dialog" aria-modal="true" aria-labelledby="igTitle" data-lenis-prevent>
+<div class="sim" id="sim-ig" role="dialog" aria-modal="true" aria-labelledby="igTitle">
   <div class="sim-in">
     <div class="sim-head"><span class="mono">Instagram · simulation</span><button class="sim-close" data-close aria-label="Close simulation" data-hover>×</button></div>
     <h3 id="igTitle">One shoot. Many pieces of content.</h3>
@@ -205,10 +302,10 @@
       </div>
       <div class="fl-ar" aria-hidden="true"><svg viewBox="0 0 60 24"><path d="M2 12h54M46 3l10 9-10 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="fl-out">
-        <figure class="fmt"><div class="fr" style="aspect-ratio:1"><img src="assets/img/sim-3.jpg" alt=""></div><figcaption><b>Feed posts</b><span>Square, one image and a caption</span></figcaption></figure>
-        <figure class="fmt"><div class="fr" style="aspect-ratio:4/5"><img src="assets/img/sim-1.jpg" alt=""><i class="dots"><u class="on"></u><u></u><u></u></i></div><figcaption><b>Carousels</b><span>Several slides, one story</span></figcaption></figure>
-        <figure class="fmt"><div class="fr" style="aspect-ratio:9/16"><img src="assets/img/sim-2.jpg" alt=""><i class="bars"><u></u><u></u><u></u></i></div><figcaption><b>Stories</b><span>Full screen, short-lived</span></figcaption></figure>
-        <figure class="fmt"><div class="fr" style="aspect-ratio:9/16"><video id="igVid" muted loop playsinline preload="auto" poster="assets/img/poster-1.jpg"></video></div><figcaption><b>Reels</b><span>Short video from the clips</span></figcaption></figure>
+        <figure class="fmt"><div class="fr ar-1"><img src="assets/img/sim-3.jpg" alt=""></div><figcaption><b>Feed posts</b><span>Square, one image and a caption</span></figcaption></figure>
+        <figure class="fmt"><div class="fr ar-45"><img src="assets/img/sim-1.jpg" alt=""><i class="dots"><u class="on"></u><u></u><u></u></i></div><figcaption><b>Carousels</b><span>Several slides, one story</span></figcaption></figure>
+        <figure class="fmt"><div class="fr ar-916"><img src="assets/img/sim-2.jpg" alt=""><i class="bars"><u></u><u></u><u></u></i></div><figcaption><b>Stories</b><span>Full screen, short-lived</span></figcaption></figure>
+        <figure class="fmt"><div class="fr ar-916"><video id="igVid" aria-label="Looping silent clip of a short product video" muted loop playsinline preload="none" poster="assets/img/poster-1.jpg"></video></div><figcaption><b>Reels</b><span>Short video from the clips</span></figcaption></figure>
       </div>
     </div>
     <div class="kp">
@@ -218,7 +315,7 @@
   </div>
 </div>
 
-<div class="sim" id="sim-tt" role="dialog" aria-modal="true" aria-labelledby="ttTitle" data-lenis-prevent>
+<div class="sim" id="sim-tt" role="dialog" aria-modal="true" aria-labelledby="ttTitle">
   <div class="sim-in">
     <div class="sim-head"><span class="mono">TikTok &amp; creators · simulation</span><button class="sim-close" data-close aria-label="Close simulation" data-hover>×</button></div>
     <h3 id="ttTitle">Every brand gets its own concept and its own creator.</h3>
@@ -228,17 +325,17 @@
       <li><span class="mono">02</span><b>Creator</b><span>We match a creator who fits your brand and your audience.</span></li>
       <li><span class="mono">03</span><b>Video</b><span>The creator films to the guide. We check, cut and publish.</span></li>
     </ol>
-    <p class="mono q-l" style="margin-top:clamp(28px,5vh,48px)">For example: Organicity, skincare</p>
+    <p class="mono q-l q-gap">For example: Organicity, skincare</p>
     <div class="tt-row">
-      <figure class="ttp"><div class="phone"><div class="scr tall"><video muted loop playsinline preload="auto" poster="assets/img/poster-2.jpg"></video></div></div><figcaption><b>Explain it</b><span>Three types of hyaluronic acid in seven seconds.</span></figcaption></figure>
-      <figure class="ttp"><div class="phone"><div class="scr tall"><video muted loop playsinline preload="auto" poster="assets/img/poster-1.jpg"></video></div></div><figcaption><b>Show the change</b><span>A loading bar fills while the skin calms down.</span></figcaption></figure>
-      <figure class="ttp"><div class="phone"><div class="scr tall"><video muted loop playsinline preload="auto" poster="assets/img/poster-3.jpg"></video></div></div><figcaption><b>Match the moment</b><span>One serum, three skin concerns, three scenes.</span></figcaption></figure>
+      <figure class="ttp"><div class="phone"><div class="scr tall"><video aria-label="Looping silent clip of a creator video" muted loop playsinline preload="none" poster="assets/img/poster-2.jpg"></video></div></div><figcaption><b>Explain it</b><span>Three types of hyaluronic acid in seven seconds.</span></figcaption></figure>
+      <figure class="ttp"><div class="phone"><div class="scr tall"><video aria-label="Looping silent clip of a creator video" muted loop playsinline preload="none" poster="assets/img/poster-1.jpg"></video></div></div><figcaption><b>Show the change</b><span>A loading bar fills while the skin calms down.</span></figcaption></figure>
+      <figure class="ttp"><div class="phone"><div class="scr tall"><video aria-label="Looping silent clip of a creator video" muted loop playsinline preload="none" poster="assets/img/poster-3.jpg"></video></div></div><figcaption><b>Match the moment</b><span>One serum, three skin concerns, three scenes.</span></figcaption></figure>
     </div>
-    <p class="note" style="margin-top:18px">Three videos for one product, each with its own idea.</p>
+    <p class="note note-top">Three videos for one product, each with its own idea.</p>
   </div>
 </div>
 
-<div class="sim" id="sim-fund" role="dialog" aria-modal="true" aria-labelledby="fuTitle" data-lenis-prevent>
+<div class="sim" id="sim-fund" role="dialog" aria-modal="true" aria-labelledby="fuTitle">
   <div class="sim-in">
     <div class="sim-head"><span class="mono">Government funding · simulation</span><button class="sim-close" data-close aria-label="Close simulation" data-hover>×</button></div>
     <h3 id="fuTitle">Which Korean programmes could fit your brand?</h3>
@@ -251,7 +348,7 @@
             <button type="button" data-v="sme" aria-pressed="false" data-hover>SME</button>
             <button type="button" data-v="mid" aria-pressed="false" data-hover>Mid-sized</button>
           </div>
-          <p class="note" style="margin:8px 0 0;font-size:14px">소상공인 · 중소기업 · 중견기업</p></div>
+          <p class="note note-ko" lang="ko">소상공인 · 중소기업 · 중견기업</p></div>
         <div><p class="mono q-l">2 · What do you need most?</p>
           <div class="chips" id="fuNeed">
             <button type="button" data-v="amz" aria-pressed="true" data-hover>Selling on Amazon</button>
@@ -260,12 +357,12 @@
           </div></div>
         <div><p class="mono q-l">Documents you usually need</p>
           <ul class="docs" id="fuDocs">
-            <li><i></i><span>Business registration certificate (사업자등록증)</span></li>
-            <li><i></i><span>Proof of company size (중소기업확인서)</span></li>
+            <li><i></i><span>Business registration certificate (<span lang="ko">사업자등록증</span>)</span></li>
+            <li><i></i><span>Proof of company size (<span lang="ko">중소기업확인서</span>)</span></li>
             <li><i></i><span>Company and product profile</span></li>
-            <li><i></i><span>Quotation from a service provider (견적서)</span></li>
+            <li><i></i><span>Quotation from a service provider (<span lang="ko">견적서</span>)</span></li>
           </ul></div>
-        <p class="note" style="font-size:14px">Based on public notices from 2026. Programmes, budgets and deadlines change each round.</p>
+        <p class="note note-sm">Based on public notices from 2026. Programmes, budgets and deadlines change each round.</p>
       </div>
       <div class="result">
         <p class="mono q-l" id="fuHead">Possible matches</p>
@@ -276,5 +373,7 @@
 </div>
 
 <script src="vendor/three.min.js"></script>
-<script>window.THREE||document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>')</script>
-<script src="assets/js/main.js"></script>
+<script src="js/three-fallback.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

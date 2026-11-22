@@ -1,0 +1,3 @@
+/* Runs first (blocking, in <head>): marks the page as JS-enabled, resets scroll, starts the intro state. */
+(function(){try{history.scrollRestoration='manual'}catch(e){}try{scrollTo(0,0)}catch(e){}addEventListener('pageshow',function(){try{if(!location.hash)scrollTo(0,0)}catch(e){}});addEventListener('load',function(){try{if(!location.hash&&document.documentElement.classList.contains('loading'))scrollTo(0,0)}catch(e){}});var h=document.documentElement;h.classList.add('js');
+try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('loading')}catch(e){}setTimeout(function(){h.classList.remove('loading')},9500)})();
