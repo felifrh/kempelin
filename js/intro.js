@@ -7,7 +7,7 @@ import {gl,pose,INTRO,getBase} from './bird.js';
   var wm=$('#wm'), dur=2700, started=false, done=false;
   try{scrollTo(0,0)}catch(e){}
   document.body.style.overflow='hidden';
-  function end(){ if(done) return; done=true; INTRO.on=false; wm.style.opacity=0; setTimeout(function(){wm.style.display='none'},600); doc.classList.add('landing'); doc.classList.remove('loading'); document.body.style.overflow=''; pose.intro=1; }
+  function end(){ if(done) return; done=true; INTRO.on=false; doc.classList.add('swap','landing'); wm.style.display='none'; doc.classList.remove('loading'); document.body.style.overflow=''; pose.intro=1; }
   function run(){
     if(started) return; started=true;
     var vw=innerWidth, vh=innerHeight, w=wm.offsetWidth, h=wm.offsetHeight, x0=(vw-w)/2, y0=(vh-h)/2, cy=y0+h*.52;

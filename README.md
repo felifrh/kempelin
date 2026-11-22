@@ -56,7 +56,7 @@ Open http://localhost:8000. ES modules need a server; opening index.html from di
 ## Before going live
 
 1. `bash scripts/fetch-vendor.sh` to download Three.js into `vendor/`; then delete `js/three-fallback.js` and its `<script>` tag, and remove `https://cdnjs.cloudflare.com` from the CSP in `vercel.json`.
-2. Fonts: the page still loads Familjen Grotesk and IBM Plex Mono from Google Fonts. Replace with self-hosted woff2 files in `assets/fonts/` and `@font-face` rules in `css/tokens.css`, then remove `fonts.googleapis.com` and `fonts.gstatic.com` from the CSP and the `<link>` in `index.html`. ABC Gaisyr Mono Light is licensed; the client still has to deliver the webfont files.
+2. Fonts: decision for now is to keep the free Google Fonts (Familjen Grotesk 400/500/700, IBM Plex Mono Light as stand-in for ABC Gaisyr Mono). Google receives the visitor IP; the privacy notice says so. For a fully self-hosted setup later: woff2 files in `assets/fonts/`, `@font-face` in `css/tokens.css`, then remove `fonts.googleapis.com` and `fonts.gstatic.com` from the CSP and the `<link>` in `index.html`.
 3. Domain: `https://kempelin.com` is a placeholder in `index.html` (canonical, Open Graph, JSON-LD), `sitemap.xml`, `robots.txt` and the www redirect in `vercel.json`. Replace everywhere once the domain is final.
 4. Contact data: `content/contact.js` holds placeholder phone and email. The address is in `index.html` (footer and privacy notice).
 5. Privacy notice (`#privacy` in `index.html`): must be reviewed by the client or a lawyer (operator, hosting region, Korean PIPA).
