@@ -34,7 +34,7 @@ import {gl,pose,INTRO,getBase} from './bird.js';
       INTRO.x=fx; INTRO.y=fy;
       var xp=px2p(x0+w+bpx*.75), yp=py2p(cy-h*.12), dA=1000, dB=1700;
       setTimeout(function(){ /* the bird brushes past the word's end and softly pushes it up into the corner */
-        var tr=document.querySelector('#hero .logo span').getBoundingClientRect(), sc=tr.width/w;
+        var tr=document.querySelector('.top .logo span').getBoundingClientRect(), sc=tr.width/w;
         wm.style.transition='transform 2.3s cubic-bezier(.45,0,.15,1),opacity .5s ease';
         wm.style.transform='translate('+tr.left+'px,'+(tr.top-(h*sc-tr.height)/2)+'px) scale('+sc+')';
         setTimeout(function(){doc.classList.add('landing')},1300);

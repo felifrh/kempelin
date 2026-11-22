@@ -1,6 +1,6 @@
 import {doc,$} from './util.js';
 import {lock,unlock} from './dialog.js';
-import {AMAZON_SIM,FUNDING} from '../content/strings.en.js';
+import {AMAZON_SIM,FUNDING,UI,fill} from '../content/strings.js';
 
 /* ---------- amazon simulation ---------- */
 (function(){
@@ -8,7 +8,7 @@ import {AMAZON_SIM,FUNDING} from '../content/strings.en.js';
   var F={price:1,cogs:1,ref:1,fba:1,inb:1,acos:1,ret:1,units:1};
   var cur=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'});
   var cur0=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
-  var num0=new Intl.NumberFormat('en-US');
+  var num0=new Intl.NumberFormat(UI.locale);
   function V(id){return parseFloat(document.getElementById(id).value)}
   function calc(){
     var price=V('price'),cogs=V('cogs'),ref=V('ref')/100,fba=V('fba'),inb=V('inb'),acos=V('acos')/100,ret=V('ret')/100,units=V('units');
@@ -26,18 +26,16 @@ import {AMAZON_SIM,FUNDING} from '../content/strings.en.js';
     var bar=$('#bar'); bar.innerHTML='';
     segs.forEach(function(s){var i=document.createElement('i');i.style.width=(s.v/total*100)+'%';i.style.background=s.c;bar.appendChild(i)});
     if(profit>0){var p=document.createElement('i');p.style.width=(profit/total*100)+'%';p.style.background='#DAE666';bar.appendChild(p)}
-    var mark=$('#mark'); mark.style.left=(price/total*100)+'%'; $('#markL').textContent='Price '+cur.format(price); $('#markL').style.cssText=(price/total>.62)?'left:auto;right:8px':'left:8px;right:auto';
+    var mark=$('#mark'); mark.style.left=(price/total*100)+'%'; $('#markL').textContent=fill(AMAZON_SIM.price,{price:cur.format(price)}); $('#markL').style.cssText=(price/total>.62)?'left:auto;right:8px':'left:8px;right:auto';
     var lg=$('#legend'); lg.innerHTML='';
     segs.concat([{n:profit>=0?AMAZON_SIM.keep:AMAZON_SIM.lose,v:profit,c:profit>=0?'#DAE666':'transparent'}]).forEach(function(s){
       var li=document.createElement('li'), sw=document.createElement('i'); sw.style.background=s.c; li.appendChild(sw); li.insertAdjacentHTML('beforeend','<span>'+s.n+'</span><b>'+cur.format(s.v)+'</b>'); lg.appendChild(li);
     });
     var margin=profit/price*100, month=profit*units;
-    $('#headline').innerHTML=(profit>=0
-      ? 'You keep '+cur.format(profit)+' on every '+cur.format(price)+' unit.'
-      : 'You lose '+cur.format(-profit)+' on every '+cur.format(price)+' unit.')
-      +'<small>'+margin.toFixed(1)+'% margin. At '+num0.format(units)+' units a month that is '+(month>=0?cur0.format(month)+' kept.':cur0.format(-month)+' lost.')+'</small>';
+    $('#headline').innerHTML=fill(profit>=0?AMAZON_SIM.keepOn:AMAZON_SIM.loseOn,{profit:cur.format(Math.abs(profit)),price:cur.format(price)})
+      +'<small>'+fill(month>=0?AMAZON_SIM.detailKept:AMAZON_SIM.detailLost,{margin:margin.toFixed(1),units:num0.format(units),amount:cur0.format(Math.abs(month))})+'</small>';
     var den=(1-ret)*(1-ref-acos);
-    $('#breakeven').textContent= den>0 ? 'Break-even price with these costs: '+cur.format((cogs+ship)/den) : 'Fees and advertising take more than every sale. No price breaks even.';
+    $('#breakeven').textContent= den>0 ? fill(AMAZON_SIM.breakeven,{price:cur.format((cogs+ship)/den)}) : AMAZON_SIM.nobreak;
     document.getElementById('o_price').textContent=cur.format(price);
     document.getElementById('o_cogs').textContent=cur.format(cogs);
     document.getElementById('o_ref').textContent=(ref*100).toFixed(1)+'%';
@@ -78,12 +76,12 @@ var ICON={
  save:'<svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>'};
 
 /* --- instagram + tiktok: videos only --- */
-var VIDS=['assets/video/video-1.mp4','assets/video/video-2.mp4','assets/video/video-3.mp4'];
+var VIDS=[1,2,3].map(function(n){ return new URL('../assets/video/video-'+n+'.mp4',import.meta.url).href });
 function vplay(v){ try{var p=v.play(); if(p&&p.catch)p.catch(function(){})}catch(e){} }
 function pauseBtn(v){
-  var b=document.createElement('button'); b.type='button'; b.className='vpause'; b.textContent='Pause'; b.setAttribute('aria-pressed','false'); b.setAttribute('data-hover','');
+  var b=document.createElement('button'); b.type='button'; b.className='vpause'; b.textContent=UI.pause; b.setAttribute('aria-pressed','false'); b.setAttribute('data-hover','');
   v.parentNode.classList.add('vwrap'); v.parentNode.appendChild(b);
-  b.addEventListener('click',function(){ var on=b.getAttribute('aria-pressed')==='false'; b.setAttribute('aria-pressed',on?'true':'false'); b.textContent=on?'Play':'Pause'; if(on){try{v.pause()}catch(e){}} else vplay(v); });
+  b.addEventListener('click',function(){ var on=b.getAttribute('aria-pressed')==='false'; b.setAttribute('aria-pressed',on?'true':'false'); b.textContent=on?UI.play:UI.pause; if(on){try{v.pause()}catch(e){}} else vplay(v); });
   return b;
 }
 function lazyVideo(v,src){ if(!v.getAttribute('src')){ v.src=src; } }
@@ -93,16 +91,16 @@ function initTT(){ var vs=$$('#sim-tt video'); vs.forEach(pauseBtn); return {ope
 /* --- funding --- */
 function initFU(){
   var out=$('#fuOut'), docs=$$('#fuDocs li'), size='small', need='amz', timers=[];
-  var P=FUNDING.programmes, RULE=FUNDING.rule, STEPS=FUNDING.steps;
+  var P=FUNDING.programmes, RULE=FUNDING.rule, STEPS=FUNDING.steps, L=FUNDING.labels;
   function card(id,best){
     var p=P[id];
-    return '<div class="pl'+(best?' best':'')+'" role="group" aria-label="'+p.n+'"><div class="ph-top"><h4>'+p.n+'<small lang="ko">'+p.k+'</small></h4>'+(best?'<span class="mono">Best fit</span>':'')+'</div><dl><dt>Run by</dt><dd>'+p.by+'</dd><dt>Covers</dt><dd>'+p.cov+'</dd><dt>For</dt><dd>'+p.who+'</dd></dl></div>';
+    return '<div class="pl'+(best?' best':'')+'" role="group" aria-label="'+p.n+'"><div class="ph-top"><h4>'+p.n+'<small lang="'+L.subLang+'">'+p.k+'</small></h4>'+(best?'<span class="mono">'+L.best+'</span>':'')+'</div><dl><dt>'+L.runBy+'</dt><dd>'+p.by+'</dd><dt>'+L.covers+'</dt><dd>'+p.cov+'</dd><dt>'+L.who+'</dt><dd>'+p.who+'</dd></dl></div>';
   }
   function render(){
     timers.forEach(clearTimeout); timers=[];
     var ids=RULE[need].filter(function(id){return P[id].sizes.indexOf(size)>-1});
     out.innerHTML=ids.map(function(id,n){return card(id,n===0)}).join('')+
-      '<div class="pl pl-late"><div class="ph-top"><h4>The way to the application</h4></div><ol class="path" id="fuPath">'+STEPS.map(function(s){return '<li><span>'+s[0]+'</span>'+(s[1]?'<span class="w">'+s[1]+'</span>':'<span></span>')+'</li>'}).join('')+'</ol></div>';
+      '<div class="pl pl-late"><div class="ph-top"><h4>'+L.path+'</h4></div><ol class="path" id="fuPath">'+STEPS.map(function(s){return '<li><span>'+s[0]+'</span>'+(s[1]?'<span class="w">'+s[1]+'</span>':'<span></span>')+'</li>'}).join('')+'</ol></div>';
     var li=$$('#fuPath li'), n=0;
     docs.forEach(function(d){d.classList.remove('ok')});
     function tick(){ if(n<li.length){ li[n].classList.add('on'); if(n===2) docs.forEach(function(d,j){ timers.push(setTimeout(function(){d.classList.add('ok')},j*160)) }); n++; timers.push(setTimeout(tick,RMX?0:420)) } }

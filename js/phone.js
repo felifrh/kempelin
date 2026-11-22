@@ -1,6 +1,6 @@
 import {$} from './util.js';
 import {TEL} from './contact.js';
-import {HINT} from '../content/strings.en.js';
+import {HINT} from '../content/strings.js';
 
 /* ---------- phone reveal ---------- */
 (function(){

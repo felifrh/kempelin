@@ -1,5 +1,5 @@
 import {RM,doc,$,clamp,lerp,smooth} from './util.js';
-import {SVC_AMAZON,SVC_FUNDING} from '../content/strings.en.js';
+import {SVC_AMAZON,SVC_FUNDING} from '../content/strings.js';
 
 /* ---------- services: pinned, scroll-driven graphics ---------- */
 export var SVC=(function(){

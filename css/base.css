@@ -21,7 +21,15 @@ html.loading .loader{display:grid}
 .loader .count{position:absolute;left:var(--pad);bottom:max(24px,env(safe-area-inset-bottom,0px))}
 
 /* header + nav */
-.top{position:absolute;z-index:20;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:flex-start;padding-top:max(22px,env(safe-area-inset-top,0px));padding-left:var(--pad);padding-right:var(--padr)}
+.top{position:fixed;z-index:20;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:flex-start;padding-top:max(22px,env(safe-area-inset-top,0px));padding-left:var(--pad);padding-right:var(--padr);transition:transform .5s var(--ease),background .4s ease,padding .4s ease}
+/* js/header.js: hides when scrolling down, comes back when scrolling up, then on a solid bar so it reads on every section colour */
+.top.hide{transform:translateY(-120%)}
+.top.solid{padding-bottom:14px;background:rgba(237,233,175,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(37,40,31,.12)}
+.top:focus-within{transform:none}
+.lang{display:flex;align-items:center;gap:8px;padding-top:6px;color:var(--olive)}
+.lang a{display:inline-block;padding:6px 4px;color:inherit;text-decoration:none;opacity:.55;transition:opacity .3s}
+.lang a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.lang a:hover{opacity:1}
 .logo{display:flex;align-items:flex-end;gap:.15em;font-weight:700;font-size:30px;letter-spacing:-.05em;line-height:1;text-decoration:none;color:var(--olive)}
 .logo svg{width:.93em;height:auto;margin-bottom:.02em}
 .nav{position:fixed;z-index:80;left:50%;transform:translateX(-50%);bottom:max(16px,env(safe-area-inset-bottom,0px));display:flex;gap:4px;padding:5px;border-radius:999px;background:var(--olive);box-shadow:0 0 0 1px rgba(237,233,175,.4);max-width:calc(100% - 24px);overflow-x:auto;scrollbar-width:none}
@@ -35,14 +43,14 @@ html.loading .loader{display:grid}
 #wm{display:none;position:fixed;left:0;top:0;z-index:4;margin:0;pointer-events:none;transform-origin:0 0;white-space:nowrap;font-weight:700;letter-spacing:-.05em;line-height:1;color:var(--olive);font-size:clamp(56px,min(14.5vw,30svh),260px);padding-right:.06em;clip-path:inset(-20% -2% -20% 110%);will-change:transform,clip-path}
 @media(max-width:700px){#wm{font-size:clamp(56px,20vw,120px)}}
 html.loading #wm{display:block}
-html.loading #hero .logo span,html.loading #hero .logo svg{opacity:0}
-#hero .logo span{transition:opacity .5s ease}
+html.loading .top .logo span,html.loading .top .logo svg{opacity:0}
+.top .logo span{transition:opacity .5s ease}
 /* hand-over from the wordmark to the logo: no cross-fade, so there is no gap and no jump */
-html.swap #hero .logo span{transition:none}#hero .logo svg{transition:opacity .8s ease .3s}
+html.swap .top .logo span{transition:none}.top .logo svg{transition:opacity .8s ease .3s}
 #wm{transition:opacity .5s ease}
-html.loading:not(.landing) #hero .top .mono,html.loading:not(.landing) #hero h1,html.loading:not(.landing) .hero-meta,html.loading:not(.landing) .nav{opacity:0}
-#hero .top .mono,#hero h1,.hero-meta,.nav{transition:opacity .9s var(--ease)}
-#hero .top .mono{transition-delay:.3s}#hero h1{transition-delay:.2s}.hero-meta{transition-delay:.45s}.nav{transition-delay:.6s}
+html.loading:not(.landing) .top .lang,html.loading:not(.landing) #hero h1,html.loading:not(.landing) .hero-meta,html.loading:not(.landing) .nav{opacity:0}
+.top .lang,#hero h1,.hero-meta,.nav{transition:opacity .9s var(--ease)}
+.top .lang{transition-delay:.3s}#hero h1{transition-delay:.2s}.hero-meta{transition-delay:.45s}.nav{transition-delay:.6s}
 /* cursor dot */
 .dot{display:none}
 @media (hover:hover) and (pointer:fine){

@@ -7,7 +7,8 @@ Specification: the Website PRD (Draft 1, 17 Nov 2026).
 ## Structure
 
 ```
-index.html                 markup, six sections + dialogs (simulations, privacy)
+index.html                 English page: six sections + dialogs (simulations, privacy)
+ko/index.html              Korean page (same markup, Korean text, paths start with ../)
 css/
   tokens.css               colours, fonts, spacing, easing (change the look here)
   base.css                 reset, header/nav, intro, cursor, reveal, skip link, 404
@@ -28,7 +29,8 @@ js/
   reveal.js, cursor.js, pictures.js
   three-fallback.js        loads Three.js from cdnjs until vendor/ exists
 content/
-  strings.en.js            all text that scripts insert (hints, calculator labels, funding programmes)
+  strings.js               picks the language from <html lang>
+  strings.en.js, strings.ko.js   all text that scripts insert (hints, calculator, funding programmes)
   contact.js               phone and email in pieces (PLACEHOLDER values)
 assets/img, assets/video   pictures and clips (work-* are placeholders)
 assets/icons, assets/og    app icons and the share image (placeholder design)
@@ -39,7 +41,11 @@ scripts/fetch-vendor.sh
 ```
 
 Visible page copy lives in `index.html` as real HTML text (needed for search engines and visitors without JavaScript).
-Text inserted by scripts lives in `content/`. For the Korean version: add `content/strings.ko.js` and a `/ko/` page.
+Text inserted by scripts lives in `content/`.
+
+## Two languages
+
+English is `/`, Korean is `/ko/` (separate pages with `hreflang`, as in PRD 9). The switch EN / 한국어 sits top right. There is no build step, so **every change to `index.html` must be made in `ko/index.html` too** (same structure, only text and the `../` paths differ), and changes to `content/strings.en.js` in `strings.ko.js`. The Korean text is a first draft and has to be checked by a native speaker (company name and address in Korean, legal wording of the privacy notice, programme names).
 
 ## Run locally
 
@@ -57,7 +63,7 @@ Open http://localhost:8000. ES modules need a server; opening index.html from di
 
 1. `bash scripts/fetch-vendor.sh` to download Three.js into `vendor/`; then delete `js/three-fallback.js` and its `<script>` tag, and remove `https://cdnjs.cloudflare.com` from the CSP in `vercel.json`.
 2. Fonts: decision for now is to keep the free Google Fonts (Familjen Grotesk 400/500/700, IBM Plex Mono Light as stand-in for ABC Gaisyr Mono). Google receives the visitor IP; the privacy notice says so. For a fully self-hosted setup later: woff2 files in `assets/fonts/`, `@font-face` in `css/tokens.css`, then remove `fonts.googleapis.com` and `fonts.gstatic.com` from the CSP and the `<link>` in `index.html`.
-3. Domain: `https://kempelin.com` is a placeholder in `index.html` (canonical, Open Graph, JSON-LD), `sitemap.xml`, `robots.txt` and the www redirect in `vercel.json`. Replace everywhere once the domain is final.
+3. Domain: `https://kempelin.com` is a placeholder in `index.html` and `ko/index.html` (canonical, hreflang, Open Graph, JSON-LD), `sitemap.xml`, `robots.txt` and the www redirect in `vercel.json`. Replace everywhere once the domain is final.
 4. Contact data: `content/contact.js` holds placeholder phone and email. The address is in `index.html` (footer and privacy notice).
 5. Privacy notice (`#privacy` in `index.html`): must be reviewed by the client or a lawyer (operator, hosting region, Korean PIPA).
 6. Share image `assets/og/share.png` is a placeholder (system font, not the brand font); replace with the designed asset. Check previews in LinkedIn, iMessage and KakaoTalk.

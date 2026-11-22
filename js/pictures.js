@@ -1,7 +1,7 @@
 import {RM} from './util.js';
 
 /* ---------- pictures ---------- */
-var IMG={"amz":"assets/img/sim-amz.jpg","ig":"assets/img/sim-ig.jpg","tt":"assets/img/sim-tt.jpg"};
+var IMG={};["amz","ig","tt"].forEach(function(k){ IMG[k]=new URL("../assets/img/sim-"+k+".jpg",import.meta.url).href });
 document.querySelectorAll('img[data-k]').forEach(function(im){ if(IMG[im.dataset.k]) im.src=IMG[im.dataset.k]; });
 (function(){
   var fine=false; try{fine=matchMedia('(hover:hover) and (pointer:fine)').matches}catch(e){}
